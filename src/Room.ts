@@ -1,4 +1,4 @@
-import { Zombie } from "./Zombie"
+import { Zombie } from "./Zombie";
 
 export interface Room{
     isFull(): boolean;
