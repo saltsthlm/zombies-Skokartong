@@ -6,15 +6,13 @@ import { strictEqual } from "node:assert";
 
 test("room is full", () => {
   const room = new ZombieRoom(0); // Room with 0 capacity is always full
-  const isFull = room.isFull(); // This should return true
-  strictEqual(isFull, true, "Room with 0 capacity should be full");
+  strictEqual(room.isFull(), true, "Room with 0 capacity should be full");
 });
 
 test("empty room that fits one zombie is not full", () => {
   const room = new ZombieRoom(1); // Room with capacity of 1
-  const isFull = room.isFull(); // This should return false
   strictEqual(
-    isFull,
+    room.isFull(),
     false,
     "Empty room with capacity of 1 should not be full"
   );
@@ -39,7 +37,16 @@ test("room with no capacity cannot fit any zombies", () => {
   );
 });
 
-test("one-roomer becomes full when a zombie is added", () => {});
+test("one-roomer becomes full when a zombie is added", () => {
+  const room = new ZombieRoom(1);
+  const zombie = new Zombie("Hans");
+  room.addZombie(zombie);
+  strictEqual(
+    room.isFull(),
+    true,
+    "Room should be full after adding one zombie"
+  );
+});
 
 test("two-roomer is not full when a zombie is added", () => {});
 
