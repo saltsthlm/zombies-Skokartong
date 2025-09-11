@@ -1,11 +1,11 @@
 import { Zombie } from "./Zombie";
-import {Room} from "./Room";
+import { Room } from "./Room";
 
 export class ZombieRoom implements Room {
-    private zombies: Zombie[] = [];
-    public constructor(private capacity: number) {}
+  private zombies: Zombie[] = [];
+  public constructor(private capacity: number) {}
 
-      isFull(): boolean {
+  isFull(): boolean {
     return this.zombies.length >= this.capacity;
   }
 
