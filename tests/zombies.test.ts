@@ -59,13 +59,20 @@ test("two-roomer is not full when a zombie is added", () => {
   );
 });
 
-test("second zombie consumes first zombie when added to a one-roomer", () => {});
+test("second zombie consumes first zombie when added to a one-roomer", () => {
+  const room = new ZombieRoom(1);
+  const firstZombie = new Zombie("Lars");
+  const secondZombie = new Zombie("Eva");
 
-// TODO:
-// 1. Test to check if room is full
-// 2. Test to check if empty room that fits one zombie is not full
-// 3. Test to consume first zombie if room is full (FIFO)
-// 4. Test to check that zombie is added to room if not full
-// 5. Test to check that room with capacity of 2 is not full when one zombie is added
-// 6. Test to check that room with capacity of 2 is full when two zombies are added
-// 7. Test to check that second zombie consumes first zombie when added to a one-roomer
+  // Add zombies to the room
+  room.addZombie(firstZombie);
+  room.addZombie(secondZombie);
+
+  const zombies = room.getZombies();
+  strictEqual(zombies.length, 1, "Room should only contain one zombie");
+  strictEqual(
+    zombies[0].getName(),
+    "Eva",
+    "The remaining zombie should be the second one added"
+  );
+});
