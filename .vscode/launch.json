@@ -4,13 +4,17 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch TypeScript with tsx",
+      "name": "Run Script: test",
       "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}/node_modules/.bin/tsx",
-      "args": ["--inspect-brk", "src/zombies.test.ts"], 
-      "runtimeArgs": []
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "test"
+      ]
     }
   ]
 }
+
+
 
 
