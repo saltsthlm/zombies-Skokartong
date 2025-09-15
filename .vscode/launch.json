@@ -8,8 +8,7 @@
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/node_modules/.bin/tsx",
       "args": ["--inspect-brk", "src/zombies.test.ts"], 
-      "runtimeArgs": [],
-      "outFiles": ["${workspaceFolder}/dist/**/*.js"] 
+      "runtimeArgs": []
     }
   ]
 }
