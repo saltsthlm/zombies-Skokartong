@@ -82,3 +82,10 @@ test("second zombie consumes first zombie when added to a one-roomer", () => {
     "The remaining zombie should be the second one added"
   );
 });
+
+// TEST 7: Test to ensure that a zombie can get created and its name can be retrieved
+test("zombie creation and name retrieval", () => {
+  const zombie = new Zombie("Rolf");
+  strictEqual(zombie.getName(), "Rolf", "Zombie name should be 'Rolf'");
+  strictEqual(zombie != null, true, "Zombie should not be null");
+});
