@@ -1,7 +1,7 @@
 import { ok } from "node:assert/strict";
 import { test } from "node:test";
-import { Zombie } from "../src/Zombie";
-import { ZombieRoom } from "../src/ZombieRoom";
+import { Zombie } from "./Zombie";
+import { ZombieRoom } from "./ZombieRoom";
 import { strictEqual } from "node:assert";
 
 // TEST 1: A room with 0 capacity is always full

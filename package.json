@@ -12,7 +12,7 @@
   "description": "",
   "devDependencies": {
     "@types/node": "^22.5.3",
-    "tsx": "^4.19.0",
-    "typescript": "^5.5.4"
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
   }
 }
