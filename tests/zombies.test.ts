@@ -4,13 +4,15 @@ import { Zombie } from "../src/Zombie";
 import { ZombieRoom } from "../src/ZombieRoom";
 import { strictEqual } from "node:assert";
 
+// TEST 1: A room with 0 capacity is always full
 test("room is full", () => {
-  const room = new ZombieRoom(0); // Room with 0 capacity is always full
+  const room = new ZombieRoom(0);
   strictEqual(room.isFull(), true, "Room with 0 capacity should be full");
 });
 
+// TEST 2: An empty room that fits one zombie is not full
 test("empty room that fits one zombie is not full", () => {
-  const room = new ZombieRoom(1); // Room with capacity of 1
+  const room = new ZombieRoom(1);
   strictEqual(
     room.isFull(),
     false,
@@ -18,9 +20,10 @@ test("empty room that fits one zombie is not full", () => {
   );
 });
 
+// TEST 3: A room with no capacity cannot fit any zombies
 test("room with no capacity cannot fit any zombies", () => {
-  const room = new ZombieRoom(0); // Room with 0 capacity
-  const zombie = new Zombie("Greta"); // Create a zombie
+  const room = new ZombieRoom(0);
+  const zombie = new Zombie("Greta");
 
   // Try to add the zombie to the room
   room.addZombie(zombie);
@@ -37,6 +40,7 @@ test("room with no capacity cannot fit any zombies", () => {
   );
 });
 
+// TEST 4: A room with capacity of one becomes full when one zombie is added
 test("one-roomer becomes full when a zombie is added", () => {
   const room = new ZombieRoom(1);
   const zombie = new Zombie("Hans");
@@ -48,6 +52,7 @@ test("one-roomer becomes full when a zombie is added", () => {
   );
 });
 
+// TEST 5: A room with capacity of two is not full when only one zombie is added
 test("two-roomer is not full when a zombie is added", () => {
   const room = new ZombieRoom(2);
   const zombie = new Zombie("Maj-Britt");
@@ -59,6 +64,7 @@ test("two-roomer is not full when a zombie is added", () => {
   );
 });
 
+// TEST 6: A room with capacity of one replaces the first zombie when a second is added
 test("second zombie consumes first zombie when added to a one-roomer", () => {
   const room = new ZombieRoom(1);
   const firstZombie = new Zombie("Lars");
