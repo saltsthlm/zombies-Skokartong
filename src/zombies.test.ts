@@ -1,7 +1,7 @@
 import { ok } from "node:assert/strict";
 import { test } from "node:test";
 import { ZombieRoom } from "./ZombieRoom";
-import { strictEqual } from "node:assert";
+import { strictEqual, throws } from "node:assert";
 
 // TEST 1: A room with 0 capacity is always full
 test("room is full", () => {
@@ -91,4 +91,24 @@ test("adding zombies up to capacity keeps them all", () => {
   ok(zombies.includes("Vickan"), "Room should contain Vickan");
   ok(zombies.includes("Calle"), "Room should contain Calle");
   ok(zombies.includes("Gunnar"), "Room should contain Gunnar");
+});
+
+// TEST 9: Error is thrown when zombie's name is null, undefined or empty
+test("error is thrown when zombie's name is null, undefined or empty", () => {
+  const room = new ZombieRoom(2);
+
+  // Test for empty name
+  throws(() => room.addZombie(""), {
+    message: "Zombie name cannot be null, undefined, or empty",
+  });
+
+  // Test for null name
+  throws(() => room.addZombie(null as unknown as string), {
+    message: "Zombie name cannot be null, undefined, or empty",
+  });
+
+  // Test for undefined name
+  throws(() => room.addZombie(undefined as unknown as string), {
+    message: "Zombie name cannot be null, undefined, or empty",
+  });
 });

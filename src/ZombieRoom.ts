@@ -16,6 +16,10 @@ export class ZombieRoom {
       this.zombies.shift(); // Remove the first zombie (FIFO)
     }
 
+    if (!zombieName || zombieName.trim().length === 0) {
+      throw new Error("Zombie name cannot be null, undefined, or empty");
+    }
+
     this.zombies.push(zombieName);
   }
 
