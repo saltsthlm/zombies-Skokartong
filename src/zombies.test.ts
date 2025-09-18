@@ -62,11 +62,8 @@ test("two-roomer is not full when a zombie is added", () => {
 // TEST 6: A room with capacity of one replaces the first zombie when a second is added
 test("second zombie consumes first zombie when added to a one-roomer", () => {
   const room = new ZombieRoom(1);
-
-  // Add zombies to the room
   room.addZombie("Gunilla");
   room.addZombie("Göran");
-
   const zombies = room.getZombies();
   strictEqual(zombies.length, 1, "Room should only contain one zombie");
   strictEqual(
@@ -80,4 +77,18 @@ test("second zombie consumes first zombie when added to a one-roomer", () => {
 test("method 'getZombies' returns empty array on new room", () => {
   const room = new ZombieRoom(3);
   strictEqual(room.getZombies().length, 0, "New room should have no zombies");
+});
+
+// Test 8: Adding zombies up to capacity keeps them all
+test("adding zombies up to capacity keeps them all", () => {
+  const room = new ZombieRoom(3);
+  room.addZombie("Vickan");
+  room.addZombie("Calle");
+  room.addZombie("Gunnar");
+
+  const zombies = room.getZombies();
+  strictEqual(zombies.length, 3, "Room should contain three zombies");
+  ok(zombies.includes("Vickan"), "Room should contain Vickan");
+  ok(zombies.includes("Calle"), "Room should contain Calle");
+  ok(zombies.includes("Gunnar"), "Room should contain Gunnar");
 });
