@@ -1,25 +1,26 @@
-import { Zombie } from "./Zombie";
-import { Room } from "./Room";
+export class ZombieRoom {
+  private zombies: string[] = [];
 
-export class ZombieRoom implements Room {
-  private zombies: Zombie[] = [];
   public constructor(private capacity: number) {}
 
+  // Check if the room is full
   isFull(): boolean {
     return this.zombies.length >= this.capacity;
   }
 
-  addZombie(zombie: Zombie): void {
+  // Add a zombie to the room
+  addZombie(zombieName: string): void {
     if (this.capacity === 0) return;
 
     if (this.isFull()) {
       this.zombies.shift(); // Remove the first zombie (FIFO)
     }
 
-    this.zombies.push(zombie);
+    this.zombies.push(zombieName);
   }
 
-  getZombies(): Zombie[] {
+  // Get the list of zombies in the room
+  getZombies(): string[] {
     return this.zombies;
   }
 }
