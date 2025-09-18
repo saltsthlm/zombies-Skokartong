@@ -75,3 +75,9 @@ test("second zombie consumes first zombie when added to a one-roomer", () => {
     "The remaining zombie should be the second one added"
   );
 });
+
+// TEST 7: Method 'getZombies' returns empty array on new room
+test("method 'getZombies' returns empty array on new room", () => {
+  const room = new ZombieRoom(3);
+  strictEqual(room.getZombies().length, 0, "New room should have no zombies");
+});
